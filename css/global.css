@@ -1,0 +1,519 @@
+/* ===============================
+   BASE
+================================ */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: white;
+  color: black;
+}
+
+
+
+.hero {
+  padding: 200px 20px;
+  text-align: center;
+  color: white;
+  background: 
+    linear-gradient(90deg, black 55%, rgba(0,0,0,0.6) 100%),
+    url("../chat/chat/ChatGPT Image 25 de jan. de 2026, 09_45_44.png");
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: contain;
+  text-align: center;
+  font-size: 50px;
+  height: 550px;
+}
+
+
+
+.hero-image {
+ 
+  top: 100%;
+  right: 0;
+  transform: translateY(-119%);
+  width: 100%;
+ 
+  
+}
+.hero span {
+  color: orange;
+}
+
+
+.content {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.hero-description {
+  font-size: 40px;
+  margin-top: 20px;
+  color: #94a3b8;
+}
+
+
+.search-box {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+  
+}
+
+.search-box {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.search-box select,
+.search-box input {
+  padding: 16px 18px;
+  font-size: 30px;
+  width: 240px;
+  border-radius: 10px;
+}
+
+.search-box button {
+  padding: 16px 26px;
+  font-size: 30px;
+  border-radius: 10px;
+  background: #f97316;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 30px;
+  margin-top: 40px;
+  
+}
+
+.stat-value {
+  font-size: 50px;
+  font-weight: bold;
+  color: orange;
+}
+
+.stat-label {
+  font-size: 25px;
+  color: #94a3b8;
+}
+
+.Destaque {
+  color: orange;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.Proc {
+  font-size: 30px;
+  color: #94a3b8;
+  margin-top: 10px;
+}
+
+.H2 {
+  font-size: 50px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.container {font-size: 30px; 
+  color: black; 
+  margin-top: 10px; 
+    text-align: center; 
+}
+
+
+.Marcas {
+  color: orange;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin: 30px 0;
+}
+
+.Mont {
+  font-size: 30px;
+  color: #94a3b8;
+  margin-top: 10px;
+}
+
+
+
+/* ===============================
+   CONTAINER
+================================ */
+.content {
+  max-width: 5000px;
+  margin: auto;
+  padding: 60px 20px;
+}
+
+/* ===============================
+   GRID DE VEÍCULOS
+================================ */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Desktop grande */
+  gap: 30px;
+  align-items: stretch;
+}
+
+/* ===============================
+   CARD
+================================ */
+.card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #1e293b;
+  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+  margin: 5px 10px 5px 25px;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 35px white;
+}
+
+/* ===============================
+   IMAGEM (NÃO CORTA)
+================================ */
+.card img {
+  width: 100%;
+  height: 260px;
+  object-fit: contain; /* MOSTRA A FOTO INTEIRA */
+  background: white;
+  padding: 10px;
+}
+
+/* ===============================
+   CONTEÚDO
+================================ */
+.card h3 {
+  margin: 16px;
+  font-size: 50px;
+  color: black;
+}
+
+.card strong {
+  margin: 28px 28px;
+  font-size: 40px;
+  color: #f97316;
+}
+
+.details-btn {
+  margin: 16px;
+  margin-top: auto;
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 30px;
+}
+
+.card-specs {
+  display: flex;
+  justify-content: space-around;
+  padding: 16px;
+  border-top: 1px solid #e2e8f0;
+  margin-top: auto;
+  font-size: 25px;
+}
+
+/* ===============================
+   MARCAS
+================================ */
+.brands-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  margin: 30px 0;
+  
+}
+
+.brand {
+  background: whitesmoke;
+  border-radius: 16px;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #1e293b;
+  transition: 0.3s;
+  margin: 28px 10px 5px 25px;
+}
+
+
+
+
+.brand img {
+  max-width: 100px;
+  filter: grayscale(100%);
+  transition: 0.3s;
+  margin-top: 15px;
+}
+
+.brand span {
+  display: block;
+  margin-top: 10px;
+  font-size: 18px;
+  color: black;
+}
+
+.brand:hover {
+  transform: translateY(-6px);
+  border-color: #f97316;
+}
+
+.brand:hover img {
+  filter: grayscale(0);
+}
+
+
+
+.brand-name {
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* ===============================
+   RESPONSIVO
+================================ */
+
+/* NOTEBOOK */
+@media (max-width: 3000px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card img {
+    height: 240px;
+  }
+}
+
+/* CELULAR */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    font-size: 34px;
+  }
+
+  .card img {
+    height: 220px;
+  }
+}
+
+
+/* WHY US*/ 
+.why-us {
+  padding: 80px 20px;
+  background: linear-gradient(black 90%, #001);
+  font-size: 40px;
+  color: white;
+  text-align: center;
+}
+
+.Porque {
+  color: orange;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.features-grid {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+}
+
+.feature {
+  background: rgba(255,255,255,0.05);
+  padding: 40px;
+  border-radius: 30px;
+}
+
+
+.localizacao {
+  background: linear-gradient(#001);
+  padding: 60px 20px;
+}
+
+.localizacao-container {
+  max-width: 1200px;
+  margin: auto;
+  
+  gap: 40px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.localizacao-info {
+  flex: 1;
+  color: #fff;
+  font-size: 30px;
+  
+}
+
+.localizacao-mapa {
+  flex: 1;
+  height: 360px;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.localizacao-mapa iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* BOTÃO SOBRE O MAPA */
+.btn-mapa {
+  position: absolute;
+  bottom: 30px;
+  right: 20px;
+  background: #e10600;
+  color: #fff;
+  padding: 18px 24px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.6);
+  transition: 0.3s;
+  font-size: 20px;
+}
+
+.btn-mapa:hover {
+  background: #b80500;
+}
+
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .localizacao-container {
+    flex-direction: column;
+  }
+
+  .localizacao-mapa {
+    width: 100%;
+    height: 300px;
+  }
+}
+
+.P {
+  font-size: 25px;
+}
+.comentarios {
+  background: linear-gradient(#001);
+  color: #fff;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.comentarios h2 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.comentarios p {
+  color: #ccc;
+  margin-bottom: 30px;
+}
+
+#commentForm {
+  max-width: 600px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  
+}
+
+#commentForm input,
+#commentForm textarea {
+  padding: 14px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+}
+
+#commentForm textarea {
+  resize: none;
+  height: 120px;
+}
+
+#commentForm button {
+  background: #e10600;
+  color: #fff;
+  border: none;
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#commentForm button:hover {
+  background: #b80500;
+}
+
+.comments-list {
+  max-width: 800px;
+  margin: 40px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.comment {
+  background: #000;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: left;
+}
+
+.comment strong {
+  color: #e10600;
+}
+
+.comment small {
+  display: block;
+  color: #777;
+  margin-top: 5px;
+}
+
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.delete-btn {
+  background: transparent;
+  border: none;
+  color: #e10600;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  color: #ff3b3b;
+}

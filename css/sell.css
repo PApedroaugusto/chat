@@ -1,0 +1,173 @@
+
+
+.sell-page {
+  min-height: 61vh;
+  background: linear-gradient(180deg, #0b0b0b, #111);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 120px 20px 40px;
+  color: #fff;
+}
+
+.sell-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.sell-header h1 {
+  font-size: 50px;
+}
+
+.sell-header p {
+  color: #bbb;
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.sell-form {
+  width: 100%;
+  max-width: 900px;
+  font-size: 20px;
+  
+}
+
+.step {
+  display: none;
+  animation: fade 0.4s ease;
+  
+}
+
+.step.active {
+  display: block;
+}
+
+.step h2 {
+  margin-bottom: 20px;
+}
+
+.sell-form input,
+.sell-form textarea {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 16px;
+  border-radius: 10px;
+  border: none;
+  background: #1c1c1c;
+  color: #fff;
+  font-size: 20px;
+}
+
+.sell-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.next-btn,
+.submit-btn {
+  width: 104%;
+  padding: 15px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.next-btn {
+  background: #e10600;
+  color: #fff;
+  font-size: 20px;
+}
+
+.next-btn:hover {
+  background: #c20500;
+}
+
+.submit-btn {
+  background: #25d366;
+  color: #000;
+  font-size: 20px;
+}
+
+.submit-btn:hover {
+  background: #1ebe5d;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .sell-header h1 {
+    font-size: 2rem;
+  }
+}
+
+
+/* PRÓXIMOS PASSOS */
+.next-steps {
+  width: 100%;
+  max-width: 900px;
+  margin-top: 80px;
+  text-align: center;
+}
+
+.next-steps h2 {
+  margin-bottom: 40px;
+  font-size: 2rem;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 30px;
+}
+
+.step-item {
+  background: #141414;
+  padding: 30px 20px;
+  border-radius: 16px;
+  box-shadow: 0 15px 30px rgba(0,0,0,.4);
+  transition: 0.3s;
+}
+
+.step-item:hover {
+  transform: translateY(-6px);
+}
+
+.step-item span {
+  display: inline-flex;
+  width: 48px;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #e10600;
+  color: #fff;
+  font-weight: bold;
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+.step-item p {
+  color: #ccc;
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .next-steps h2 {
+    font-size: 1.6rem;
+  }
+}
