@@ -1,4 +1,5 @@
-const API = "http://localhost:3000/vehicles";
+const API = window.API_VEHICLES;
+
 
 let vehicle = null;
 let currentImage = 0;

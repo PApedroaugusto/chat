@@ -5,21 +5,15 @@ const cors = require("cors");
 
 const app = express();
 
-// ✅ PORT CORRETA PARA RENDER
+// 🔥 PORTA DO RENDER (OU 3000 LOCAL)
 const PORT = process.env.PORT || 3000;
+
 const DB_FILE = path.join(__dirname, "db.json");
 
 // 🔥 SUPORTE A IMAGENS BASE64 GRANDES
 app.use(express.json({ limit: "100mb" }));
 app.use(express.urlencoded({ extended: true, limit: "100mb" }));
 app.use(cors());
-
-/* ===============================
-   ROTA RAIZ (IMPORTANTE)
-================================ */
-app.get("/", (req, res) => {
-  res.send("🚀 API de veículos rodando com sucesso!");
-});
 
 /* ===============================
    DB HELPERS
@@ -45,16 +39,13 @@ function saveDB(db) {
 }
 
 /* ===============================
-   ROTAS DE VEÍCULOS
+   ROTAS
 ================================ */
-
-// GET todos
 app.get("/vehicles", (req, res) => {
   const db = readDB();
   res.json(db.vehicles);
 });
 
-// POST criar
 app.post("/vehicles", (req, res) => {
   const db = readDB();
 
@@ -70,11 +61,9 @@ app.post("/vehicles", (req, res) => {
   db.vehicles.push(vehicle);
   saveDB(db);
 
-  console.log("✅ VEÍCULO SALVO:", vehicle.id);
   res.status(201).json(vehicle);
 });
 
-// PUT editar
 app.put("/vehicles/:id", (req, res) => {
   const db = readDB();
   const id = Number(req.params.id);
@@ -87,11 +76,9 @@ app.put("/vehicles/:id", (req, res) => {
   db.vehicles[index] = { ...req.body, id };
   saveDB(db);
 
-  console.log("✏️ VEÍCULO EDITADO:", id);
   res.json(db.vehicles[index]);
 });
 
-// DELETE remover
 app.delete("/vehicles/:id", (req, res) => {
   const db = readDB();
   const id = Number(req.params.id);
@@ -99,13 +86,10 @@ app.delete("/vehicles/:id", (req, res) => {
   db.vehicles = db.vehicles.filter(v => v.id !== id);
   saveDB(db);
 
-  console.log("🗑 VEÍCULO REMOVIDO:", id);
   res.json({ success: true });
 });
 
-/* ===============================
-   START SERVER
-================================ */
+/* =============================== */
 app.listen(PORT, () => {
-  console.log(`🚗 API rodando na porta ${PORT}`);
+  console.log(`🚀 API rodando na porta ${PORT}`);
 });

@@ -7,7 +7,7 @@ const searchInput = document.getElementById("searchInput");
 const sortFilter = document.getElementById("sortFilter");
 const count = document.getElementById("vehicleCount");
 
-const API = "http://localhost:3000/vehicles";
+const API = window.API_VEHICLES;
 
 let vehicles = [];
 
