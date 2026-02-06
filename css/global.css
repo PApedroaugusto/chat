@@ -21,7 +21,7 @@ body {
   background-position: right center;
   background-size: contain;
   text-align: center;
-  font-size: 22px;
+  font-size: 15px;
   height: 300px;
 }
 
@@ -29,8 +29,8 @@ body {
 
 .hero-image {
   position: absolute;        /* 🔥 permite posicionar no topo */
-  top: 10px;                 /* distância do topo */
-  right: 50%;             /* canto direito */
+  top: 0;                 /* distância do topo */
+  right: 30%;             /* canto direito */
   width: 500px;              /* tamanho da imagem */
   z-index: 10;               /* fica acima do fundo */
 }
@@ -62,7 +62,7 @@ body {
   display: flex;
   gap: 20px;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 0;
   
 }
 
@@ -70,7 +70,7 @@ body {
   display: flex;
   gap: 16px;
   justify-content: center;
-  margin-top: 30px;
+  margin-top: 0;
 }
 
 .search-box select,
