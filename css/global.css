@@ -30,7 +30,7 @@ body {
 .hero-image {
   position: absolute;        /* 🔥 permite posicionar no topo */
   top: 10px;                 /* distância do topo */
-  right: 35%;             /* canto direito */
+  right: 50%;             /* canto direito */
   width: 500px;              /* tamanho da imagem */
   z-index: 10;               /* fica acima do fundo */
 }
