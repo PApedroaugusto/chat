@@ -11,7 +11,7 @@ body {
 
 
 .hero {
-  padding: 200px 20px;
+  padding: 100px 20px;
   text-align: center;
   color: white;
   background: 
@@ -21,21 +21,25 @@ body {
   background-position: right center;
   background-size: contain;
   text-align: center;
-  font-size: 50px;
+  font-size: 25px;
   height: 550px;
 }
 
 
 
 .hero-image {
- 
-  top: 100%;
-  right: 0;
-  transform: translateY(-119%);
-  width: 100%;
- 
-  
+  position: absolute;        /* 🔥 permite posicionar no topo */
+  top: 10px;                 /* distância do topo */
+  right: 35%;             /* canto direito */
+  width: 500px;              /* tamanho da imagem */
+  z-index: 10;               /* fica acima do fundo */
 }
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+}
+
 .hero span {
   color: orange;
 }
