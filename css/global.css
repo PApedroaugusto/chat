@@ -21,8 +21,8 @@ body {
   background-position: right center;
   background-size: contain;
   text-align: center;
-  font-size: 25px;
-  height: 550px;
+  font-size: 22px;
+  height: 300px;
 }
 
 
@@ -52,7 +52,7 @@ body {
 }
 
 .hero-description {
-  font-size: 40px;
+  font-size: 18px;
   margin-top: 20px;
   color: #94a3b8;
 }
@@ -75,15 +75,15 @@ body {
 
 .search-box select,
 .search-box input {
-  padding: 16px 18px;
-  font-size: 30px;
+  padding: 12px 18px;
+  font-size: 22px;
   width: 240px;
   border-radius: 10px;
 }
 
 .search-box button {
-  padding: 16px 26px;
-  font-size: 30px;
+  padding: 12px 18px;
+  font-size: 22px;
   border-radius: 10px;
   background: #f97316;
   color: white;
@@ -102,36 +102,37 @@ body {
 }
 
 .stat-value {
-  font-size: 50px;
+  font-size: 22px;
   font-weight: bold;
   color: orange;
 }
 
 .stat-label {
-  font-size: 25px;
+  font-size: 20px;
   color: #94a3b8;
 }
 
 .Destaque {
   color: orange;
-  font-size: 30px;
+  font-size: 22px;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
 .Proc {
-  font-size: 30px;
+  font-size: 20px;
   color: #94a3b8;
   margin-top: 10px;
 }
 
 .H2 {
-  font-size: 50px;
+  font-size: 25px;
   font-weight: bold;
   margin: 10px 0;
 }
 
-.container {font-size: 30px; 
+.container {
+  font-size: 20px; 
   color: black; 
   margin-top: 10px; 
     text-align: center; 
@@ -140,14 +141,14 @@ body {
 
 .Marcas {
   color: orange;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
   margin-bottom: 10px;
   margin: 30px 0;
 }
 
 .Mont {
-  font-size: 30px;
+  font-size: 22px;
   color: #94a3b8;
   margin-top: 10px;
 }
@@ -208,13 +209,13 @@ body {
 ================================ */
 .card h3 {
   margin: 16px;
-  font-size: 50px;
+  font-size: 22px;
   color: black;
 }
 
 .card strong {
   margin: 28px 28px;
-  font-size: 40px;
+  font-size: 22px;
   color: #f97316;
 }
 
@@ -224,7 +225,7 @@ body {
   color: black;
   font-weight: bold;
   text-decoration: none;
-  font-size: 30px;
+  font-size: 22px;
 }
 
 .card-specs {
@@ -233,7 +234,7 @@ body {
   padding: 16px;
   border-top: 1px solid #e2e8f0;
   margin-top: auto;
-  font-size: 25px;
+  font-size: 20px;
 }
 
 /* ===============================
@@ -270,7 +271,7 @@ body {
 .brand span {
   display: block;
   margin-top: 10px;
-  font-size: 18px;
+  font-size: 15px;
   color: black;
 }
 
@@ -327,14 +328,14 @@ body {
 .why-us {
   padding: 80px 20px;
   background: linear-gradient(black 90%, #001);
-  font-size: 40px;
+  font-size: 22px;
   color: white;
   text-align: center;
 }
 
 .Porque {
   color: orange;
-  font-size: 30px;
+  font-size: 22px;
   font-weight: bold;
   margin-bottom: 10px;
 }
@@ -370,7 +371,7 @@ body {
 .localizacao-info {
   flex: 1;
   color: #fff;
-  font-size: 30px;
+  font-size: 22px;
   
 }
 
@@ -401,7 +402,7 @@ body {
   border-radius: 8px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.6);
   transition: 0.3s;
-  font-size: 20px;
+  font-size: 12px;
 }
 
 .btn-mapa:hover {
@@ -422,17 +423,17 @@ body {
 }
 
 .P {
-  font-size: 25px;
+  font-size: 20px;
 }
 .comentarios {
   background: linear-gradient(#001);
   color: #fff;
-  padding: 60px 20px;
+  padding: 40px 10px;
   text-align: center;
 }
 
 .comentarios h2 {
-  font-size: 40px;
+  font-size: 25px;
   margin-bottom: 10px;
 }
 
@@ -455,7 +456,7 @@ body {
   padding: 14px;
   border-radius: 8px;
   border: none;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 #commentForm textarea {
