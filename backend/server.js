@@ -4,13 +4,22 @@ const path = require("path");
 const cors = require("cors");
 
 const app = express();
-const PORT = 3000;
+
+// ✅ PORT CORRETA PARA RENDER
+const PORT = process.env.PORT || 3000;
 const DB_FILE = path.join(__dirname, "db.json");
 
 // 🔥 SUPORTE A IMAGENS BASE64 GRANDES
 app.use(express.json({ limit: "100mb" }));
 app.use(express.urlencoded({ extended: true, limit: "100mb" }));
 app.use(cors());
+
+/* ===============================
+   ROTA RAIZ (IMPORTANTE)
+================================ */
+app.get("/", (req, res) => {
+  res.send("🚀 API de veículos rodando com sucesso!");
+});
 
 /* ===============================
    DB HELPERS
@@ -36,13 +45,16 @@ function saveDB(db) {
 }
 
 /* ===============================
-   ROTAS
+   ROTAS DE VEÍCULOS
 ================================ */
+
+// GET todos
 app.get("/vehicles", (req, res) => {
   const db = readDB();
   res.json(db.vehicles);
 });
 
+// POST criar
 app.post("/vehicles", (req, res) => {
   const db = readDB();
 
@@ -62,6 +74,7 @@ app.post("/vehicles", (req, res) => {
   res.status(201).json(vehicle);
 });
 
+// PUT editar
 app.put("/vehicles/:id", (req, res) => {
   const db = readDB();
   const id = Number(req.params.id);
@@ -78,6 +91,7 @@ app.put("/vehicles/:id", (req, res) => {
   res.json(db.vehicles[index]);
 });
 
+// DELETE remover
 app.delete("/vehicles/:id", (req, res) => {
   const db = readDB();
   const id = Number(req.params.id);
@@ -89,7 +103,9 @@ app.delete("/vehicles/:id", (req, res) => {
   res.json({ success: true });
 });
 
-/* =============================== */
+/* ===============================
+   START SERVER
+================================ */
 app.listen(PORT, () => {
-  console.log(`🚗 API rodando em http://localhost:${PORT}`);
+  console.log(`🚗 API rodando na porta ${PORT}`);
 });
