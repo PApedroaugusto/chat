@@ -169,3 +169,10 @@ function renderVehicles(list) {
     grid.appendChild(card);
   });
 }
+
+
+function toggleFilters() {
+  const filters = document.getElementById("filtersHidden");
+  filters.classList.toggle("active");
+}
+

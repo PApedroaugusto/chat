@@ -4,11 +4,11 @@
   width: 100%;
   background: black;
   z-index: 1000;
-  font-size: 30px;
+  font-size: 15px;
 }
 
 .header-container {
-  max-width: 1200px;
+  max-width: 1300px;
   margin: auto;
   padding: 20px 20px;
   display: flex;
@@ -66,7 +66,7 @@
   display: none;
   background: none;
   border: none;
-  font-size: 20px;
+  font-size: 15px;
   color: white;
 }
 
@@ -75,7 +75,7 @@
   display: none;
   flex-direction: column;
   background: #020617;
-  font-size: 100px;
+  font-size: 15px;
 }
 
 .mobile-menu a {

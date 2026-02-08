@@ -17,14 +17,15 @@ document.addEventListener("DOMContentLoaded", async () => {
    MARCAS
 ================================ */
 const BRANDS = [
-  { name: "Chevrolet", logo: "https://upload.wikimedia.org/wikipedia/commons/1/1e/Chevrolet-logo.png" },
-  { name: "Fiat", logo: "https://www.nicepng.com/png/detail/47-479970_fiat-logo-png-transparent-logo-de-fiat-png.png" },
-  { name: "Ford", logo: "https://upload.wikimedia.org/wikipedia/commons/3/3e/Ford_logo_flat.svg" },
-  { name: "Honda", logo: "https://upload.wikimedia.org/wikipedia/commons/7/76/Honda_logo.svg" },
-  { name: "Hyundai", logo: "https://www.pngkey.com/png/detail/899-8992379_hyundai-logo-hyundai.png" },
-  { name: "Jeep", logo: "https://www.nicepng.com/png/detail/416-4160381_jeep-logo-logo-jeep.png" },
-  { name: "Toyota", logo: "https://upload.wikimedia.org/wikipedia/commons/e/e7/Toyota.svg" },
-  { name: "Volkswagen", logo: "https://upload.wikimedia.org/wikipedia/commons/6/6d/Volkswagen_logo_2019.svg" },
+{ name: "Chevrolet", logo: "assets/brands/chevrolet.png" },
+    { name: "Fiat", logo: "assets/brands/fiat.png" },
+    { name: "Ford", logo: "assets/brands/ford.png" },
+    { name: "Honda", logo: "assets/brands/honda.png" },
+    { name: "Hyundai", logo: "assets/brands/hyundai.png" },
+    { name: "Jeep", logo: "assets/brands/jeep.png" },
+    { name: "Toyota", logo: "assets/brands/toyota.png" },
+    { name: "Volkswagen", logo: "assets/brands/volkswagen.png" },
+
 ];
 
 function loadBrands() {
@@ -138,3 +139,6 @@ function renderFeatured() {
     `;
   });
 }
+
+
+

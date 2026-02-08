@@ -64,6 +64,8 @@ function renderTable(list = vehicles) {
   vehicleTable.innerHTML = "";
 
   list.forEach(v => {
+    const id = v._id || v.id;
+
     vehicleTable.innerHTML += `
       <tr>
         <td><strong>${v.brand} ${v.model}</strong></td>
@@ -75,8 +77,8 @@ function renderTable(list = vehicles) {
         <td>${v.status}</td>
         <td>${v.featured ? "⭐" : "-"}</td>
         <td>
-          <button onclick="editVehicle(${v.id})">Editar</button>
-          <button onclick="deleteVehicle(${v.id})">Excluir</button>
+          <button onclick="editVehicle('${id}')">Editar</button>
+          <button onclick="deleteVehicle('${id}')">Excluir</button>
         </td>
       </tr>
     `;
@@ -84,6 +86,7 @@ function renderTable(list = vehicles) {
 
   updateStats();
 }
+
 
 // ===============================
 // STATS
@@ -224,10 +227,10 @@ async function saveVehicle() {
 // EDIT
 // ===============================
 function editVehicle(id) {
-  const v = vehicles.find(v => v.id === id);
+  const v = vehicles.find(v => String(v._id || v.id) === String(id));
   if (!v) return;
 
-  editingId = id;
+  editingId = v._id || v.id;
   currentPhotos = [...(v.photos || [])];
 
   brand.value = v.brand;
@@ -248,12 +251,21 @@ function editVehicle(id) {
   openForm();
 }
 
+
 // ===============================
 // DELETE
 // ===============================
 async function deleteVehicle(id) {
   if (!confirm("Excluir veículo?")) return;
-  await fetch(`${API}/${id}`, { method: "DELETE" });
+
+  await fetch(`${API}/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: localStorage.getItem("adminToken")
+    }
+  });
+
   loadVehicles();
 }
+
 

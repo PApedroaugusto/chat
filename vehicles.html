@@ -58,42 +58,56 @@
 <main class="vehicles-container">
 
   <!-- FILTROS -->
-  <aside class="filters">
 
-    <input
-      id="searchInput"
-      type="text"
-      placeholder="Buscar por marca ou modelo"
-    >
+  <!-- BARRA FIXA -->
+  <!-- BARRA FIXA -->
+<div class="filters-bar">
+  <input
+    id="searchInput"
+    type="text"
+    placeholder="Buscar por marca ou modelo"
+  >
 
-    <select id="brandFilter">
-      <option value="">Todas as marcas</option>
-    </select>
+  <select id="brandFilter">
+    <option value="">Todas as marcas</option>
+  </select>
 
-    <select id="yearFilter">
-      <option value="">Todos os anos</option>
-    </select>
+  <button class="btn-filters" onclick="toggleFilters()">
+    Filtros
+  </button>
 
-    <select id="categoryFilter">
-      <option value="">Todas as categorias</option>
-    </select>
+  <button onclick="clearFilters()">
+    Limpar
+  </button>
+</div>
 
-    <select id="priceFilter">
-      <option value="">Todos os preços</option>
-      <option value="0-50000">Até R$ 50.000</option>
-      <option value="50000-100000">R$ 50.000 a R$ 100.000</option>
-      <option value="100000-200000">R$ 100.000 a R$ 200.000</option>
-      <option value="200000">Acima de R$ 200.000</option>
-    </select>
+<!-- FILTROS ESCONDIDOS -->
+<aside id="filtersHidden" class="filters-hidden">
+  <select id="yearFilter">
+    <option value="">Todos os anos</option>
+  </select>
 
-    <select id="sortFilter">
-      <option value="newest">Mais recentes</option>
-      <option value="price_asc">Menor preço</option>
-      <option value="price_desc">Maior preço</option>
-    </select>
+  <select id="categoryFilter">
+    <option value="">Todas as categorias</option>
+  </select>
 
-    <button onclick="clearFilters()">Limpar filtros</button>
-  </aside>
+  <select id="priceFilter">
+    <option value="">Todos os preços</option>
+    <option value="0-50000">Até R$ 50.000</option>
+    <option value="50000-100000">R$ 50.000 a R$ 100.000</option>
+    <option value="100000-200000">R$ 100.000 a R$ 200.000</option>
+    <option value="200000">Acima de R$ 200.000</option>
+  </select>
+
+  <select id="sortFilter">
+    <option value="newest">Mais recentes</option>
+    <option value="price_asc">Menor preço</option>
+    <option value="price_desc">Maior preço</option>
+  </select>
+</aside>
+
+
+
 
   <!-- GRID DE VEÍCULOS -->
   <section class="vehicles-grid" id="vehiclesGrid"></section>

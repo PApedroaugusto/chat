@@ -9,12 +9,12 @@ body {
 .admin-header {
   padding: 50px;
   background: #020617;
-  font-size: 30px;
+  font-size: 24px;
 }
 
 .container {
   padding: 50px;
-  font-size: 30px;
+  font-size: 24px;
 }
 
 .stats {
@@ -48,7 +48,7 @@ body {
 .actions input {
   padding: 10px;
   width: 250px;
-  font-size: 25px;
+  font-size: 24px;
 }
 
 .actions button {
@@ -57,7 +57,7 @@ body {
   padding: 50px 50px;
   border-radius: 8px;
   cursor: pointer;
-font-size: 25px;
+font-size: 24px;
 }
 
 table {
@@ -99,7 +99,7 @@ th, td {
   align-items: center;
   justify-content: center;
   z-index: 999;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 /* ===== MODAL BOX ===== */
@@ -131,7 +131,7 @@ th, td {
   color: #fff;
   margin-bottom: 20px;
   text-align: center;
-  font-size: 30px;
+  font-size: 24px;
 }
 
 
@@ -146,7 +146,7 @@ th, td {
   border: 1px solid #1e293b;
   background: #020617;
   color: #fff;
-  font-size: 20px;
+  font-size: 18px;
   outline: none;
   transition: border 0.2s;
 }
@@ -192,7 +192,7 @@ th, td {
   padding: 12px;
   border-radius: 10px;
   border: none;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -230,7 +230,7 @@ th, td {
 .status {
   padding: 4px 10px;
   border-radius: 12px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: bold;
   text-transform: capitalize;
 }
@@ -256,7 +256,7 @@ th, td {
   color: #eaeaea;
   line-height: 1.6;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
-  font-size: 25px;
+  font-size: 18px;
 }
 
 td button {
@@ -266,6 +266,6 @@ td button {
   border-radius: 6px;
   color: white;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 18px;
   
 }
