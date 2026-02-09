@@ -45,22 +45,44 @@ function applyUrlFilters() {
    POPULAR FILTROS
 ================================ */
 function populateFilters() {
-  const brands = [...new Set(vehicles.map(v => v.brand).filter(Boolean))].sort();
-  const years = [...new Set(vehicles.map(v => v.year).filter(Boolean))].sort((a, b) => b - a);
-  const categories = [...new Set(vehicles.map(v => v.category).filter(Boolean))].sort();
+  const brandsSet = new Set();
+  const yearsSet = new Set();
+  const categoriesSet = new Set();
 
-  brandFilter.innerHTML = `<option value="">Todas as marcas</option>`;
-  yearFilter.innerHTML = `<option value="">Todos os anos</option>`;
-  categoryFilter.innerHTML = `<option value="">Todas categorias</option>`;
+  vehicles.forEach(v => {
+    if (v.brand) brandsSet.add(v.brand);
+    if (v.year) yearsSet.add(v.year);
+    if (v.category) categoriesSet.add(v.category);
+  });
 
-  brands.forEach(b => brandFilter.innerHTML += `<option value="${b}">${b}</option>`);
-  years.forEach(y => yearFilter.innerHTML += `<option value="${y}">${y}</option>`);
-  categories.forEach(c => categoryFilter.innerHTML += `<option value="${c}">${c}</option>`);
+  const brands = [...brandsSet].sort();
+  const years = [...yearsSet].sort((a, b) => b - a);
+  const categories = [...categoriesSet].sort();
+
+  let brandsHtml = '<option value="">Todas as marcas</option>';
+  brands.forEach(b => brandsHtml += `<option value="${b}">${b}</option>`);
+  brandFilter.innerHTML = brandsHtml;
+
+  let yearsHtml = '<option value="">Todos os anos</option>';
+  years.forEach(y => yearsHtml += `<option value="${y}">${y}</option>`);
+  yearFilter.innerHTML = yearsHtml;
+
+  let catsHtml = '<option value="">Todas categorias</option>';
+  categories.forEach(c => catsHtml += `<option value="${c}">${c}</option>`);
+  categoryFilter.innerHTML = catsHtml;
 }
 
 /* ===============================
    EVENTOS
 ================================ */
+function debounce(func, wait) {
+  let timeout;
+  return function(...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), wait);
+  };
+}
+
 [
   brandFilter,
   yearFilter,
@@ -69,7 +91,15 @@ function populateFilters() {
   sortFilter
 ].forEach(el => el.addEventListener("change", applyFilters));
 
-searchInput.addEventListener("keyup", applyFilters);
+searchInput.addEventListener("input", debounce(applyFilters, 300));
+
+grid.addEventListener("click", (e) => {
+  const card = e.target.closest(".vehicle-card");
+  if (card) {
+    const id = card.dataset.id;
+    window.location.href = `vehicle-details.html?id=${id}`;
+  }
+});
 
 /* ===============================
    APLICAR FILTROS
@@ -130,44 +160,38 @@ function clearFilters() {
    RENDERIZAR CARDS
 ================================ */
 function renderVehicles(list) {
-  grid.innerHTML = "";
   count.innerText = `${list.length} veículos disponíveis`;
 
-  list.forEach(vehicle => {
+  const html = list.map(vehicle => {
     const image =
       vehicle.photos?.[0] ||
       vehicle.image ||
       "img/no-image.png";
 
-    const card = document.createElement("div");
-    card.className = "vehicle-card";
-
-    card.innerHTML = `
-      <div class="image">
-        <img src="${image}" alt="${vehicle.brand} ${vehicle.model}" loading="lazy">
-      </div>
-
-      <div class="info">
-        <span class="brand">${vehicle.brand}</span>
-        <h3>${vehicle.model}</h3>
-
-        <div class="specs">
-          <span>📅 ${vehicle.year || "-"}</span>
-          <span>⚡ ${vehicle.power || "-"}</span>
+    return `
+      <div class="vehicle-card" data-id="${vehicle.id}">
+        <div class="image">
+          <img src="${image}" alt="${vehicle.brand} ${vehicle.model}" loading="lazy">
         </div>
 
-        <strong class="price">
-          R$ ${Number(vehicle.price).toLocaleString("pt-BR")}
-        </strong>
+        <div class="info">
+          <span class="brand">${vehicle.brand}</span>
+          <h3>${vehicle.model}</h3>
+
+          <div class="specs">
+            <span>📅 ${vehicle.year || "-"}</span>
+            <span>⚡ ${vehicle.power || "-"}</span>
+          </div>
+
+          <strong class="price">
+            R$ ${Number(vehicle.price).toLocaleString("pt-BR")}
+          </strong>
+        </div>
       </div>
     `;
+  }).join('');
 
-    card.addEventListener("click", () => {
-      window.location.href = `vehicle-details.html?id=${vehicle.id}`;
-    });
-
-    grid.appendChild(card);
-  });
+  grid.innerHTML = html;
 }
 
 
