@@ -24,18 +24,14 @@
   text-decoration: none;
 }
 
-.logo-box {
-  background: orange;
-  width: 40px;
+.logo-img {
   height: 40px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: auto;
+  display: block;
 }
 
-.logo-text strong {
-  color: orange;
+.logo-text {
+  display: none; /* logo.png already contains the text */
 }
 
 .nav-desktop a {

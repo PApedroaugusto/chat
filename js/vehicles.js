@@ -144,7 +144,7 @@ function renderVehicles(list) {
 
     card.innerHTML = `
       <div class="image">
-        <img src="${image}" alt="${vehicle.brand} ${vehicle.model}">
+        <img src="${image}" alt="${vehicle.brand} ${vehicle.model}" loading="lazy">
       </div>
 
       <div class="info">

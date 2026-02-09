@@ -16,7 +16,7 @@ body {
   color: white;
   background: 
     linear-gradient(90deg, black 55%, rgba(0,0,0,0.6) 100%),
-    url("../chat/chat/ChatGPT Image 25 de jan. de 2026, 09_45_44.png");
+    url("../hero-car.png");
   background-repeat: no-repeat;
   background-position: right center;
   background-size: contain;
@@ -169,7 +169,7 @@ body {
 ================================ */
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Desktop grande */
+  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
   align-items: stretch;
 }
@@ -181,27 +181,25 @@ body {
   background: white;
   border-radius: 20px;
   overflow: hidden;
-  border: 1px solid #1e293b;
+  border: 1px solid #e2e8f0;
   transition: 0.3s;
   display: flex;
   flex-direction: column;
-  margin: 5px 10px 5px 25px;
 }
 
 .card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 35px white;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.1);
 }
 
 /* ===============================
-   IMAGEM (NÃO CORTA)
+   IMAGEM (MAIOR E MELHOR)
 ================================ */
 .card img {
   width: 100%;
-  height: 260px;
-  object-fit: contain; /* MOSTRA A FOTO INTEIRA */
-  background: white;
-  padding: 10px;
+  height: 300px;
+  object-fit: cover; /* Melhor preenchimento */
+  background: #f8fafc;
 }
 
 /* ===============================
@@ -297,29 +295,24 @@ body {
    RESPONSIVO
 ================================ */
 
-/* NOTEBOOK */
-@media (max-width: 3000px) {
+@media (max-width: 1024px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
-
-  .card img {
-    height: 240px;
-  }
 }
 
-/* CELULAR */
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .grid {
     grid-template-columns: 1fr;
   }
 
   .hero {
-    font-size: 34px;
+    height: auto;
+    padding: 60px 20px;
   }
 
   .card img {
-    height: 220px;
+    height: 250px;
   }
 }
 

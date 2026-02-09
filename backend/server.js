@@ -41,12 +41,12 @@ function saveDB(db) {
 /* ===============================
    ROTAS
 ================================ */
-app.get("/vehicles", (req, res) => {
+app.get("/api/vehicles", (req, res) => {
   const db = readDB();
   res.json(db.vehicles);
 });
 
-app.post("/vehicles", (req, res) => {
+app.post("/api/vehicles", (req, res) => {
   const db = readDB();
 
   if (!req.body || !req.body.brand) {
@@ -64,9 +64,13 @@ app.post("/vehicles", (req, res) => {
   res.status(201).json(vehicle);
 });
 
-app.put("/vehicles/:id", (req, res) => {
+app.put("/api/vehicles/:id", (req, res) => {
   const db = readDB();
   const id = Number(req.params.id);
+
+  if (isNaN(id)) {
+    return res.status(400).json({ error: "ID inválido" });
+  }
 
   const index = db.vehicles.findIndex(v => v.id === id);
   if (index === -1) {
@@ -79,9 +83,13 @@ app.put("/vehicles/:id", (req, res) => {
   res.json(db.vehicles[index]);
 });
 
-app.delete("/vehicles/:id", (req, res) => {
+app.delete("/api/vehicles/:id", (req, res) => {
   const db = readDB();
   const id = Number(req.params.id);
+
+  if (isNaN(id)) {
+    return res.status(400).json({ error: "ID inválido" });
+  }
 
   db.vehicles = db.vehicles.filter(v => v.id !== id);
   saveDB(db);

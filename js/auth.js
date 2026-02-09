@@ -15,6 +15,7 @@ if (form) {
 
     if (user === ADMIN_USER && pass === ADMIN_PASS) {
       localStorage.setItem(AUTH_KEY, "true");
+      localStorage.setItem("adminToken", "dummy-token-123");
       window.location.href = "admin.html";
     } else {
       error.classList.remove("hidden");
@@ -32,5 +33,6 @@ function protectAdmin() {
 // 🔹 LOGOUT
 function logout() {
   localStorage.removeItem(AUTH_KEY);
+  localStorage.removeItem("adminToken");
   window.location.href = "login.html";
 }
