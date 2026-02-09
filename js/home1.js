@@ -36,7 +36,7 @@ function loadBrands() {
   BRANDS.forEach(b => {
     grid.innerHTML += `
       <a href="vehicles.html?brand=${encodeURIComponent(b.name)}" class="brand">
-        <img src="${b.logo}" alt="${b.name}">
+        <img src="${b.logo}" alt="${b.name}" loading="lazy">
         <span class="brand-name">${b.name}</span>
       </a>
     `;
@@ -122,7 +122,7 @@ function renderFeatured() {
 
     container.innerHTML += `
       <div class="card">
-        <img src="${image}" alt="${v.brand} ${v.model}">
+        <img src="${image}" alt="${v.brand} ${v.model}" loading="lazy">
         <h3>${v.brand} ${v.model}</h3>
 
         <div class="card-specs">
