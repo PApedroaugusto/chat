@@ -9,17 +9,30 @@ const count = document.getElementById("vehicleCount");
 
 const API = window.API_VEHICLES;
 
+// Start fetching immediately
+const fetchPromise = fetch(API).then(res => res.json()).catch(err => {
+  console.error("Erro ao carregar veículos:", err);
+  return [];
+});
+
 let vehicles = [];
+let displayed = 0;        // Quantos veículos já foram mostrados
+const BATCH_SIZE = 6;     // Quantos veículos carregar por vez
+let currentFiltered = []; // Lista filtrada atual
 
 /* ===============================
    LOAD
 ================================ */
-document.addEventListener("DOMContentLoaded", init);
+// Call init as soon as possible
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", init);
+} else {
+  init();
+}
 
 async function init() {
   try {
-    const res = await fetch(API);
-    vehicles = await res.json();
+    vehicles = await fetchPromise;
 
     populateFilters();
     applyUrlFilters(); // 👈 pega marca da URL
@@ -49,13 +62,14 @@ function populateFilters() {
   const years = [...new Set(vehicles.map(v => v.year).filter(Boolean))].sort((a, b) => b - a);
   const categories = [...new Set(vehicles.map(v => v.category).filter(Boolean))].sort();
 
-  brandFilter.innerHTML = `<option value="">Todas as marcas</option>`;
-  yearFilter.innerHTML = `<option value="">Todos os anos</option>`;
-  categoryFilter.innerHTML = `<option value="">Todas categorias</option>`;
+  brandFilter.innerHTML = `<option value="">Todas as marcas</option>` +
+    brands.map(b => `<option value="${b}">${b}</option>`).join('');
 
-  brands.forEach(b => brandFilter.innerHTML += `<option value="${b}">${b}</option>`);
-  years.forEach(y => yearFilter.innerHTML += `<option value="${y}">${y}</option>`);
-  categories.forEach(c => categoryFilter.innerHTML += `<option value="${c}">${c}</option>`);
+  yearFilter.innerHTML = `<option value="">Todos os anos</option>` +
+    years.map(y => `<option value="${y}">${y}</option>`).join('');
+
+  categoryFilter.innerHTML = `<option value="">Todas categorias</option>` +
+    categories.map(c => `<option value="${c}">${c}</option>`).join('');
 }
 
 /* ===============================
@@ -70,6 +84,24 @@ function populateFilters() {
 ].forEach(el => el.addEventListener("change", applyFilters));
 
 searchInput.addEventListener("keyup", applyFilters);
+
+// Click nos cards (Event Delegation)
+grid.addEventListener("click", (e) => {
+  const card = e.target.closest(".vehicle-card");
+  if (card) {
+    const id = card.dataset.id;
+    window.location.href = `vehicle-details.html?id=${id}`;
+  }
+});
+
+// Scroll infinito
+window.addEventListener("scroll", () => {
+  if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
+    if (displayed < currentFiltered.length) {
+      renderVehicles(currentFiltered, false);
+    }
+  }
+});
 
 /* ===============================
    APLICAR FILTROS
@@ -129,45 +161,43 @@ function clearFilters() {
 /* ===============================
    RENDERIZAR CARDS
 ================================ */
-function renderVehicles(list) {
-  grid.innerHTML = "";
-  count.innerText = `${list.length} veículos disponíveis`;
+function renderVehicles(list, reset = true) {
+  if (reset) {
+    grid.innerHTML = "";
+    displayed = 0;
+    currentFiltered = list;
+  }
 
-  list.forEach(vehicle => {
-    const image =
-      vehicle.photos?.[0] ||
-      vehicle.image ||
-      "img/no-image.png";
+  const nextBatch = currentFiltered.slice(displayed, displayed + BATCH_SIZE);
 
-    const card = document.createElement("div");
-    card.className = "vehicle-card";
-
-    card.innerHTML = `
-      <div class="image">
-        <img src="${image}" alt="${vehicle.brand} ${vehicle.model}" loading="lazy">
-      </div>
-
-      <div class="info">
-        <span class="brand">${vehicle.brand}</span>
-        <h3>${vehicle.model}</h3>
-
-        <div class="specs">
-          <span>📅 ${vehicle.year || "-"}</span>
-          <span>⚡ ${vehicle.power || "-"}</span>
+  const html = nextBatch.map(vehicle => {
+    const image = vehicle.photos?.[0] || vehicle.image || "img/no-image.png";
+    return `
+      <div class="vehicle-card" data-id="${vehicle.id}">
+        <div class="image">
+          <img src="${image}" alt="${vehicle.brand} ${vehicle.model}" loading="lazy">
         </div>
 
-        <strong class="price">
-          R$ ${Number(vehicle.price).toLocaleString("pt-BR")}
-        </strong>
+        <div class="info">
+          <span class="brand">${vehicle.brand}</span>
+          <h3>${vehicle.model}</h3>
+
+          <div class="specs">
+            <span>📅 ${vehicle.year || "-"}</span>
+            <span>⚡ ${vehicle.power || "-"}</span>
+          </div>
+
+          <strong class="price">
+            R$ ${Number(vehicle.price).toLocaleString("pt-BR")}
+          </strong>
+        </div>
       </div>
     `;
+  }).join('');
 
-    card.addEventListener("click", () => {
-      window.location.href = `vehicle-details.html?id=${vehicle.id}`;
-    });
-
-    grid.appendChild(card);
-  });
+  grid.insertAdjacentHTML('beforeend', html);
+  displayed += nextBatch.length;
+  count.innerText = `${currentFiltered.length} veículos disponíveis`;
 }
 
 
