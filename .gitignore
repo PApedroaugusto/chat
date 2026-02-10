@@ -1,0 +1,6 @@
+node_modules/
+*.log
+test-results/
+/home/jules/verification/
+.DS_Store
+.last-run.json
